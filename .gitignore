@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-print
+.DS_Store
+*.local
+.env
+.env.*
+*.log
+.vite

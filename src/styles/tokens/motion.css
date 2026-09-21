@@ -1,0 +1,11 @@
+:root{
+--ease-cine:cubic-bezier(.22,1,.36,1);/* @kind other */
+--ease-out:cubic-bezier(.16,1,.3,1);/* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1);/* @kind other */
+--dur-fast:160ms;/* @kind other */
+--dur-base:280ms;/* @kind other */
+--dur-slow:620ms;/* @kind other */
+--dur-cine:1100ms;/* @kind other */
+--hover-lift:-2px;/* @kind other */
+--press-scale:.985;/* @kind other */
+}

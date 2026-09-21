@@ -1,0 +1,40 @@
+:root{
+--font-display:"Unbounded","Archivo",system-ui,sans-serif;
+--font-text:"Archivo",system-ui,-apple-system,sans-serif;
+
+--fw-light:300;/* @kind font */
+--fw-regular:400;/* @kind font */
+--fw-medium:500;/* @kind font */
+--fw-semibold:600;/* @kind font */
+--fw-bold:700;/* @kind font */
+--fw-black:900;/* @kind font */
+
+/* Escala tipográfica — pôster (clamp p/ telas fluidas) */
+--fs-poster:clamp(64px,11vw,180px);/* @kind font */
+--fs-display-1:clamp(48px,7.5vw,112px);/* @kind font */
+--fs-display-2:clamp(38px,5.2vw,76px);/* @kind font */
+--fs-title-1:clamp(30px,3.4vw,52px);/* @kind font */
+--fs-title-2:clamp(24px,2.4vw,36px);/* @kind font */
+--fs-title-3:22px;/* @kind font */
+--fs-body-lg:20px;/* @kind font */
+--fs-body:17px;/* @kind font */
+--fs-body-sm:15px;/* @kind font */
+--fs-caption:13px;/* @kind font */
+--fs-eyebrow:12px;/* @kind font */
+
+--lh-poster:0.86;/* @kind font */
+--lh-display:0.94;/* @kind font */
+--lh-title:1.08;/* @kind font */
+--lh-body:1.55;/* @kind font */
+
+--ls-poster:-0.04em;/* @kind font */
+--ls-display:-0.03em;/* @kind font */
+--ls-title:-0.015em;/* @kind font */
+--ls-body:0em;/* @kind font */
+--ls-eyebrow:0.28em;/* @kind font */
+
+/* Papéis semânticos */
+--text-display-font:var(--font-display);
+--text-body-font:var(--font-text);
+--text-eyebrow-transform:uppercase;/* @kind other */
+}

@@ -1,0 +1,733 @@
+/* Press kit — print / PDF module (A4) */
+
+:root {
+  --print-page-w: 210mm;
+  --print-page-h: 297mm;
+  --print-pad: 11mm;
+}
+
+.print-hero-brand {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: var(--print-page-w);
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--preto-900) !important;
+    color: var(--text-primary) !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+
+  .shell {
+    max-width: none;
+    padding-left: var(--print-pad);
+    padding-right: var(--print-pad);
+  }
+
+  .nav {
+    display: none !important;
+  }
+
+  /* Fixed one-page sheets */
+  .print-sheet:not(.print-flow) {
+    box-sizing: border-box;
+    width: var(--print-page-w);
+    height: var(--print-page-h);
+    max-height: var(--print-page-h);
+    min-height: var(--print-page-h);
+    padding: var(--print-pad);
+    margin: 0;
+    break-after: page;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  .print-sheet.is-last {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* Trajetória: one A4 sheet, compact */
+  .print-sheet.print-flow {
+    box-sizing: border-box;
+    width: var(--print-page-w);
+    height: var(--print-page-h);
+    max-height: var(--print-page-h);
+    min-height: var(--print-page-h);
+    padding: var(--print-pad);
+    margin: 0;
+    break-after: page;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  /* --- Hero --- */
+  .hero.print-sheet {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 46%;
+    object-fit: cover;
+    object-position: 60% 18%;
+  }
+
+  .hero-wash {
+    background: linear-gradient(
+      90deg,
+      #0d0d0d 36%,
+      rgba(13, 13, 13, 0.8) 56%,
+      rgba(46, 18, 71, 0.28) 100%
+    );
+  }
+
+  .hero-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 12mm var(--print-pad) 14mm;
+    box-sizing: border-box;
+  }
+
+  .print-hero-brand {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .hero-copy {
+    max-width: 52%;
+    gap: 14px;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+  }
+
+  .hero-title {
+    font-size: 42px !important;
+    line-height: 0.98 !important;
+    max-width: 12ch !important;
+  }
+
+  .hero-lead {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .hero-stats {
+    gap: 28px;
+    margin-top: 6px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .hero-stats > div span:nth-child(2) {
+    font-size: 36px !important;
+  }
+
+  /* --- Trajetória: cabeçalho compacto, linha do tempo em largura total --- */
+  .trajetoria.print-flow {
+    background: var(--preto-900);
+    padding-top: 9mm;
+    padding-bottom: 8mm;
+    height: var(--print-page-h);
+    max-height: var(--print-page-h);
+    min-height: var(--print-page-h);
+    overflow: hidden;
+  }
+
+  .trajetoria-pin {
+    position: static !important;
+  }
+
+  .trajetoria.is-scroll .timeline-event,
+  .trajetoria.is-scroll .trajetoria-quote,
+  .timeline-event,
+  .trajetoria-quote {
+    opacity: 1 !important;
+  }
+
+  .timeline-fill {
+    display: none !important;
+  }
+
+  .open-format.is-scroll .method-card,
+  .method-card {
+    opacity: 1 !important;
+  }
+
+  .trajetoria-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .trajetoria-pin {
+    flex: 0 0 auto;
+  }
+
+  .trajetoria-side {
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .trajetoria .quote {
+    margin: 0;
+    padding-left: 14px;
+    gap: 6px;
+  }
+
+  .trajetoria .quote-text {
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    max-width: none !important;
+  }
+
+  .trajetoria header {
+    gap: 6px !important;
+    position: static !important;
+  }
+
+  .trajetoria header h2 {
+    font-size: 26px !important;
+    line-height: 1 !important;
+  }
+
+  .trajetoria header p {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    max-width: none !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+  }
+
+  .timeline {
+    --year-width: 92px;
+    --timeline-gap: 18px;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .timeline-event {
+    padding-bottom: 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .timeline-copy {
+    gap: 2px;
+  }
+
+  .timeline-year {
+    font-size: 15px !important;
+    letter-spacing: -0.03em;
+  }
+
+  .timeline-title {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .timeline-desc {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    max-width: none !important;
+  }
+
+  .timeline-tag {
+    margin-top: 3px;
+    transform: none;
+  }
+
+  .timeline-body {
+    min-height: 0;
+    padding-left: 18px;
+  }
+
+  .timeline::before {
+    top: 6px;
+    bottom: 8px;
+  }
+
+  .timeline-dot {
+    width: 6px;
+    height: 6px;
+    top: 5px;
+    box-shadow: 0 0 0 3px var(--preto-900);
+  }
+
+  .timeline-event.is-current .timeline-dot {
+    width: 9px;
+    height: 9px;
+    top: 3px;
+    left: -5px;
+    box-shadow: 0 0 0 3px var(--preto-900);
+  }
+
+  .palcos-word {
+    display: none !important;
+  }
+
+  /* --- Palcos --- */
+  .palcos.print-sheet {
+    background: var(--roxo-800) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding-top: 12mm;
+    padding-bottom: 12mm;
+  }
+
+  .palcos-inner {
+    gap: 16px;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .palcos-inner header {
+    gap: 10px !important;
+    flex-shrink: 0;
+  }
+
+  .palcos-inner header h2 {
+    font-size: 28px !important;
+  }
+
+  .palcos-inner header p {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .palcos-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 14px;
+    flex: 1;
+    min-height: 0;
+    align-content: stretch;
+  }
+
+  .palcos-grid figure {
+    gap: 8px !important;
+    min-height: 0;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .palcos-grid figure > div {
+    aspect-ratio: auto !important;
+    flex: 1;
+    min-height: 160px;
+  }
+
+  /* --- Open format --- */
+  .open-format.print-sheet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .open-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    align-items: start;
+  }
+
+  .open-copy,
+  .open-pin {
+    gap: 14px;
+    position: static !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+  }
+
+  .chips-mobile {
+    display: none !important;
+  }
+
+  .chips-desk {
+    display: flex !important;
+  }
+
+  .open-copy header h2 {
+    font-size: 26px !important;
+  }
+
+  .method-grid {
+    gap: 8px;
+  }
+
+  .method-legend {
+    padding: 10px 12px 12px;
+    gap: 4px;
+  }
+
+  .method-title {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .method-body {
+    font-size: 9.5px;
+    line-height: 1.3;
+  }
+
+  .method-num {
+    font-size: 9px;
+  }
+
+  .method-shot .photo-frame-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* --- Contato --- */
+  .contato.print-sheet {
+    background: var(--preto-800);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 18mm;
+    padding-bottom: 0;
+    border-top: none;
+  }
+
+  .contato-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    flex: 1;
+    align-content: center;
+    max-width: 560px;
+  }
+
+  .contato-copy {
+    gap: 32px;
+    max-width: none;
+  }
+
+  .contato-copy header {
+    gap: 16px !important;
+  }
+
+  .contato-copy header h2 {
+    font-size: 44px !important;
+  }
+
+  .contato-copy header p {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .rodape {
+    border-top: 1px solid var(--border-hairline);
+    padding: 9mm 0 11mm;
+  }
+
+  .rodape-inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* -------- Screen A4 preview (?print=1) -------- */
+body.is-print-preview {
+  background: #161616 !important;
+  overflow: auto !important;
+}
+
+body.is-print-preview .site {
+  width: var(--print-page-w);
+  margin: 24px auto 64px;
+}
+
+body.is-print-preview .no-print,
+body.is-print-preview .nav {
+  display: none !important;
+}
+
+body.is-print-preview .shell {
+  max-width: none;
+  padding-left: var(--print-pad);
+  padding-right: var(--print-pad);
+}
+
+body.is-print-preview .print-sheet:not(.print-flow) {
+  box-sizing: border-box;
+  width: var(--print-page-w);
+  height: var(--print-page-h);
+  max-height: var(--print-page-h);
+  min-height: var(--print-page-h);
+  padding: var(--print-pad);
+  margin: 0 auto 28px;
+  outline: 1px dashed rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  background: var(--preto-900);
+}
+
+body.is-print-preview .print-sheet.print-flow {
+  box-sizing: border-box;
+  width: var(--print-page-w);
+  height: var(--print-page-h);
+  max-height: var(--print-page-h);
+  min-height: var(--print-page-h);
+  padding: var(--print-pad);
+  margin: 0 auto 28px;
+  outline: 1px dashed rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  background: var(--preto-900);
+}
+
+body.is-print-preview .hero.print-sheet {
+  position: relative;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+}
+
+body.is-print-preview .hero-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 12mm var(--print-pad) 14mm;
+  box-sizing: border-box;
+}
+
+body.is-print-preview .print-hero-brand {
+  display: block;
+}
+
+body.is-print-preview .hero-copy {
+  max-width: 52%;
+  gap: 14px;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+body.is-print-preview .hero-title {
+  font-size: 42px !important;
+  line-height: 0.98 !important;
+  max-width: 12ch !important;
+}
+
+body.is-print-preview .hero-photo {
+  width: 46%;
+}
+
+body.is-print-preview .hero-stats > div span:nth-child(2) {
+  font-size: 36px !important;
+}
+
+body.is-print-preview .trajetoria-pin {
+  position: static !important;
+}
+
+body.is-print-preview .trajetoria.is-scroll .timeline-event,
+body.is-print-preview .trajetoria.is-scroll .trajetoria-quote,
+body.is-print-preview .timeline-event,
+body.is-print-preview .trajetoria-quote {
+  opacity: 1 !important;
+}
+
+body.is-print-preview .timeline-fill {
+  display: none !important;
+}
+
+body.is-print-preview .open-copy,
+body.is-print-preview .open-pin {
+  position: static !important;
+  margin: 0 !important;
+  background: none !important;
+  border: none !important;
+}
+
+body.is-print-preview .chips-mobile {
+  display: none !important;
+}
+
+body.is-print-preview .chips-desk {
+  display: flex !important;
+}
+
+body.is-print-preview .open-format.is-scroll .method-card,
+body.is-print-preview .method-card {
+  opacity: 1 !important;
+}
+
+body.is-print-preview .trajetoria-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+body.is-print-preview .trajetoria-side {
+  gap: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.is-print-preview .trajetoria header {
+  gap: 6px !important;
+}
+
+body.is-print-preview .trajetoria header h2 {
+  font-size: 26px !important;
+}
+
+body.is-print-preview .trajetoria header p {
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  max-width: none !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+
+body.is-print-preview .timeline {
+  --year-width: 92px;
+  --timeline-gap: 18px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+body.is-print-preview .timeline-event {
+  padding-bottom: 0;
+}
+
+body.is-print-preview .timeline-year {
+  font-size: 15px !important;
+}
+
+body.is-print-preview .timeline-title {
+  font-size: 16px !important;
+}
+
+body.is-print-preview .timeline-desc {
+  font-size: 13px !important;
+  max-width: none !important;
+}
+
+body.is-print-preview .trajetoria .quote-text {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+body.is-print-preview .palcos.print-sheet,
+body.is-print-preview .open-format.print-sheet {
+  display: flex;
+  flex-direction: column;
+}
+
+body.is-print-preview .palcos.print-sheet {
+  justify-content: space-between;
+  background: var(--roxo-800) !important;
+}
+
+body.is-print-preview .palcos-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+body.is-print-preview .palcos-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+  flex: 1;
+}
+
+body.is-print-preview .palcos-grid figure > div {
+  aspect-ratio: auto !important;
+  min-height: 150px;
+  height: 100%;
+}
+
+body.is-print-preview .open-format.print-sheet {
+  justify-content: center;
+}
+
+body.is-print-preview .palcos-word {
+  display: none !important;
+}
+
+body.is-print-preview .contato.print-sheet {
+  justify-content: space-between;
+  background: var(--preto-800);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body.is-print-preview .contato-split {
+  grid-template-columns: 1fr;
+}
+
+body.is-print-preview .rodape {
+  padding: 9mm 0 11mm;
+}
