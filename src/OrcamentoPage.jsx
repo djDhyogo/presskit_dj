@@ -47,6 +47,7 @@ function Field({ value, onChange, placeholder, label, type = 'text', display, cl
 function MoneyField({ value, onChange, ariaLabel, className = '' }) {
   const [texto, setTexto] = useState(null);
   const editando = texto !== null;
+  const numero = Number(value) || 0;
   return (
     <label className={['or-field', 'or-money', className].filter(Boolean).join(' ')}>
       <input
@@ -54,8 +55,8 @@ function MoneyField({ value, onChange, ariaLabel, className = '' }) {
         inputMode="decimal"
         aria-label={ariaLabel}
         placeholder="R$ 0,00"
-        value={editando ? texto : value ? formatarMoedaBR(value) : ''}
-        onFocus={() => setTexto(value ? formatarNumeroBR(value) : '')}
+        value={editando ? texto : formatarMoedaBR(numero)}
+        onFocus={() => setTexto(formatarNumeroBR(numero))}
         onChange={(e) => setTexto(e.target.value)}
         onBlur={() => {
           onChange(parseMoedaBR(texto));
@@ -63,6 +64,16 @@ function MoneyField({ value, onChange, ariaLabel, className = '' }) {
         }}
       />
     </label>
+  );
+}
+
+const SINAL_CONDICAO_RE = /pagamento do sinal de \d+%/i;
+
+function comSinalAtualizado(condicoes, pct) {
+  return condicoes.map((c) =>
+    SINAL_CONDICAO_RE.test(c?.texto || '')
+      ? { ...c, texto: c.texto.replace(/sinal de \d+%/i, `sinal de ${pct}%`) }
+      : c
   );
 }
 
@@ -110,10 +121,21 @@ export default function OrcamentoPage() {
 
   function baixarPdf() {
     const tituloOriginal = document.title;
+    const root = document.documentElement;
     document.title = `Proposta ${documento.numero} - DJ Dhyogo`;
-    window.addEventListener('afterprint', () => { document.title = tituloOriginal; }, { once: true });
-    document.documentElement.classList.add('is-printing');
+    root.classList.add('is-printing');
     window.print();
+    root.classList.remove('is-printing');
+    document.title = tituloOriginal;
+  }
+
+  function setPercentualSinal(valor) {
+    const pct = Math.min(100, Math.max(0, Number(valor) || 0));
+    setEstado((s) => ({
+      ...s,
+      percentualSinal: pct,
+      condicoes: comSinalAtualizado(s.condicoes, pct),
+    }));
   }
 
   const msgWhats = [
@@ -250,7 +272,7 @@ export default function OrcamentoPage() {
                     inputMode="numeric"
                     aria-label="Percentual do sinal"
                     value={percentualSinal}
-                    onChange={(e) => set({ percentualSinal: Math.min(100, Math.max(0, Number(e.target.value) || 0)) })}
+                    onChange={(e) => setPercentualSinal(e.target.value)}
                   />
                   <span>% na assinatura do contrato</span>
                 </div>

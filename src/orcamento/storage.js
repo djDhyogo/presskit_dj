@@ -69,11 +69,25 @@ export function estadoInicial(seq = lerSequencia()) {
   };
 }
 
+function normalizarCondicoes(condicoes, pct) {
+  return condicoes.map((c) => {
+    let texto = c?.texto || '';
+    if (texto === 'Valores válidos pelo prazo indicado nesta proposta.') {
+      texto = 'Esta proposta só tem validade mediante a minha assinatura.';
+    }
+    if (/pagamento do sinal de \d+%/i.test(texto)) {
+      texto = texto.replace(/sinal de \d+%/i, `sinal de ${pct}%`);
+    }
+    return { ...c, texto };
+  });
+}
+
 export function carregar() {
   try {
     const salvo = JSON.parse(localStorage.getItem(CHAVE));
     if (!salvo) return estadoInicial();
     const base = estadoInicial();
+    const percentualSinal = Math.min(100, Math.max(0, Number(salvo.percentualSinal) || 50));
     return {
       ...base,
       ...salvo,
@@ -82,13 +96,9 @@ export function carregar() {
       escopo: Array.isArray(salvo.escopo) ? salvo.escopo : base.escopo,
       itens: Array.isArray(salvo.itens) ? salvo.itens : base.itens,
       condicoes: Array.isArray(salvo.condicoes)
-        ? salvo.condicoes.map((c) =>
-            c?.texto === 'Valores válidos pelo prazo indicado nesta proposta.'
-              ? { ...c, texto: 'Esta proposta só tem validade mediante a minha assinatura.' }
-              : c
-          )
+        ? normalizarCondicoes(salvo.condicoes, percentualSinal)
         : base.condicoes,
-      percentualSinal: Number(salvo.percentualSinal) || 50,
+      percentualSinal,
     };
   } catch {
     return estadoInicial();
@@ -96,7 +106,11 @@ export function carregar() {
 }
 
 export function salvar(estado) {
-  localStorage.setItem(CHAVE, JSON.stringify(estado));
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(estado));
+  } catch {
+    // quota / modo privado — ignora para não quebrar a edição
+  }
 }
 
 export function iniciarNovaProposta() {
