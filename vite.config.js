@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(import.meta.dirname, 'index.html'),
         privacy: resolve(import.meta.dirname, 'privacy-policy.html'),
         prestacao: resolve(import.meta.dirname, 'prestacao.html'),
+        orcamento: resolve(import.meta.dirname, 'orcamento.html'),
       },
     },
   },
