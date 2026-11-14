@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
     <div className="site privacy">
       <header className="nav">
         <div className="shell nav-inner">
-          <a href="/" className="nav-brand" aria-label="DJ DHYOGO — início">
+          <a href="/" className="nav-brand" aria-label="DHYOGO DJ — início">
             <Logo height={22} />
           </a>
           <nav className="nav-links" aria-label="Seções">
@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
       </header>
 
       <main className="shell privacy-main">
-        <p className="privacy-kicker">DJ Dhyogo</p>
+        <p className="privacy-kicker">Dhyogo DJ</p>
         <h1>Privacy Policy</h1>
         <p className="privacy-jump"><a href="#portugues">Versão em português</a></p>
 

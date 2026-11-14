@@ -15,8 +15,8 @@ import {
   salvar,
 } from './orcamento/storage.js';
 
-const WHATSAPP = '5599991970062';
-const WHATSAPP_FMT = '(99) 99197-0062';
+const WHATSAPP = '559981289199';
+const WHATSAPP_FMT = '+55-99-98128-9199';
 const CNPJ_FMT = '55.996.625/0001-47';
 const RAZAO = 'Dyogo Santos Leal';
 const ENDERECO = 'Av. Pedro Neiva de Santana, 520 — 3º andar · Jardim América · Imperatriz — MA · CEP 65914-730';
@@ -122,7 +122,7 @@ export default function OrcamentoPage() {
   function baixarPdf() {
     const tituloOriginal = document.title;
     const root = document.documentElement;
-    document.title = `Proposta ${documento.numero} - DJ Dhyogo`;
+    document.title = `Proposta ${documento.numero} - Dhyogo DJ`;
     root.classList.add('is-printing');
     window.print();
     root.classList.remove('is-printing');
@@ -185,7 +185,7 @@ export default function OrcamentoPage() {
             </div>
           </div>
           <div>
-            <h1>Proposta comercial — Dhyogo</h1>
+            <h1>Proposta comercial — Dhyogo DJ</h1>
             <p className="or-company">
               {RAZAO} · CNPJ {CNPJ_FMT}
               <br />
@@ -304,7 +304,7 @@ export default function OrcamentoPage() {
 
           <div className="or-sign">
             <div>
-              <b>{RAZAO} — DJ Dhyogo</b>
+              <b>{RAZAO} — Dhyogo DJ</b>
               CNPJ {CNPJ_FMT} · Contratado
             </div>
             <div>

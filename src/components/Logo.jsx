@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Logo({ height = 40, tone = 'white', src = '/assets/logo-dhyogo.png', alt = 'DHYOGO', style, ...rest }) {
+export function Logo({ height = 40, tone = 'white', src = '/assets/logo-dhyogo.png', alt = 'DHYOGO DJ', style, ...rest }) {
   const tones = {
     white: 'none',
     lilas: 'brightness(0) saturate(100%) invert(80%) sepia(19%) saturate(923%) hue-rotate(221deg) brightness(97%) contrast(92%)',

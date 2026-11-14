@@ -33,8 +33,8 @@ const DRONE = {
   sd: '/assets/video-drone-720.mp4',
   poster: '/assets/poster-drone.jpg',
 };
-const WHATSAPP = '5599991970062';
-const WHATSAPP_DISPLAY = '(99) 99197-0062';
+const WHATSAPP = '559981289199';
+const WHATSAPP_DISPLAY = '+55-99-98128-9199';
 
 const LINKS = [
   { href: '#trajetoria', label: 'Trajetória' },
@@ -140,7 +140,7 @@ function Nav() {
   return (
     <header className={open ? 'nav is-open' : 'nav'}>
       <div className="shell nav-inner">
-        <a href="#topo" className="nav-brand" onClick={go} aria-label="DJ DHYOGO — início">
+        <a href="#topo" className="nav-brand" onClick={go} aria-label="DHYOGO DJ — início">
           <Logo height={22} />
         </a>
         <nav className="nav-links" aria-label="Seções">
@@ -173,7 +173,7 @@ function Nav() {
 function Hero() {
   return (
     <section id="topo" className="hero section-anchor print-sheet">
-      <img className="hero-photo" src={PHOTO.retrato} alt="DJ Dhyogo" />
+      <img className="hero-photo" src={PHOTO.retrato} alt="Dhyogo DJ" />
       <span className="hero-wash" aria-hidden="true" />
       <div className="shell hero-shell">
         <div className="print-hero-brand">
@@ -327,7 +327,7 @@ function Trajetoria() {
           </SectionTitle>
         </div>
         <div className="trajetoria-side">
-          <Quote className="trajetoria-quote" attribution="DJ Dhyogo">
+          <Quote className="trajetoria-quote" attribution="Dhyogo DJ">
             <mark className="quote-mark">Texana</mark> foi a escola. Leitura de pista toda semana, sem ensaio. Sempre lembro dela.
           </Quote>
           <ul className="timeline" ref={timelineRef}>
@@ -371,7 +371,7 @@ function Palcos() {
           Quando a pista é a cidade inteira
         </SectionTitle>
         <div className="palcos-grid">
-          <PhotoFrame src={PHOTO.carnaval} alt="DJ Dhyogo no Carnaval de Imperatriz 2025" ratio="3/4" objectPosition="50% 42%" tint={false} grade={false} caption="Carnaval 2025" />
+          <PhotoFrame src={PHOTO.carnaval} alt="Dhyogo DJ no Carnaval de Imperatriz 2025" ratio="3/4" objectPosition="50% 42%" tint={false} grade={false} caption="Carnaval 2025" />
           <PhotoFrame src={PHOTO.camarote} alt="Camarote Imperoza" ratio="3/4" objectPosition="55% 35%" tint={false} grade={false} caption="Camarote Imperoza" />
           <PhotoFrame src={PHOTO.avioes} alt="Aviões do Forró — 2023" ratio="3/4" objectPosition="35% 40%" tint={false} grade={false} caption="Aviões do Forró — 2023" />
           <PhotoFrame src={PHOTO.veraneio} alt="Veraneio 2025" ratio="3/4" objectPosition="30% 25%" tint={false} grade={false} caption="Veraneio 2025" />
@@ -418,7 +418,7 @@ function DroneFilm() {
         playsInline
         preload="metadata"
         controls={reduce}
-        aria-label="Imagens aéreas de drone de uma apresentação do DJ Dhyogo"
+        aria-label="Imagens aéreas de drone de uma apresentação do Dhyogo DJ"
       />
     </div>
   );
@@ -601,7 +601,7 @@ function Orcamento() {
           </SectionTitle>
           <div>
             <ContactRow label="WhatsApp" value={WHATSAPP_DISPLAY} href={`https://wa.me/${WHATSAPP}`} />
-            <ContactRow label="Instagram" value="@dhyogodj" href="https://instagram.com/dhyogodj" />
+            <ContactRow label="Instagram" value="@dhyogodj | dhyogodj" href="https://www.instagram.com/dhyogodj" />
             <ContactRow label="Site" value="dhyogo.com.br" href="https://dhyogo.com.br" />
             <ContactRow label="CNPJ" value="55.996.625/0001-47" />
           </div>
@@ -634,7 +634,11 @@ function Orcamento() {
         <footer className="rodape">
           <div className="rodape-inner">
             <Logo height={18} tone="lilas" />
-            <span className="rodape-meta">Imperatriz — MA · CNPJ 55.996.625/0001-47</span>
+            <span className="rodape-meta">
+              Dhyogo DJ · Imperatriz — MA · CNPJ 55.996.625/0001-47
+              {' · '}
+              <a className="rodape-link" href="https://www.instagram.com/dhyogodj">Instagram: @dhyogodj | dhyogodj</a>
+            </span>
             <a className="rodape-link" href="/privacy-policy.html">Política de Privacidade</a>
           </div>
         </footer>

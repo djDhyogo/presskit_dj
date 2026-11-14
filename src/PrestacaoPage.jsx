@@ -11,8 +11,8 @@ import {
 } from './prestacao/format.js';
 import { carregar, iniciarNovoExtrato, novoAdicional, novoEvento, salvar } from './prestacao/storage.js';
 
-const WHATSAPP = '5599991970062';
-const WHATSAPP_FMT = '(99) 99197-0062';
+const WHATSAPP = '559981289199';
+const WHATSAPP_FMT = '+55-99-98128-9199';
 const PIX = '55996625000147';
 const PIX_FMT = '55.996.625/0001-47';
 const RAZAO_SOCIAL = 'Dyogo Santos Leal';
@@ -120,7 +120,7 @@ export default function PrestacaoPage() {
 
   function baixarPdf() {
     const tituloOriginal = document.title;
-    document.title = `Extrato ${documento.numero} - DJ Dhyogo`;
+    document.title = `Extrato ${documento.numero} - Dhyogo DJ`;
     window.addEventListener('afterprint', () => { document.title = tituloOriginal; }, { once: true });
     document.documentElement.classList.add('is-printing');
     window.print();
@@ -144,7 +144,7 @@ export default function PrestacaoPage() {
     <div className="site cobranca">
       <header className="nav no-print">
         <div className="shell nav-inner">
-          <a href="/" className="nav-brand" aria-label="DJ DHYOGO — início">
+          <a href="/" className="nav-brand" aria-label="DHYOGO DJ — início">
             <Logo height={22} />
           </a>
           <div className="nav-actions">
@@ -161,7 +161,7 @@ export default function PrestacaoPage() {
               <Logo height={34} className="screen-only" />
               <Logo height={34} tone="roxo" className="print-only" />
               <div className="cb-emissor-info">
-                <strong>DJ Dhyogo</strong>
+                <strong>Dhyogo DJ</strong>
                 <span>{RAZAO_SOCIAL} · CNPJ {PIX_FMT}</span>
                 <span>WhatsApp {WHATSAPP_FMT} · @dhyogodj · dhyogo.com.br</span>
               </div>
@@ -355,7 +355,7 @@ export default function PrestacaoPage() {
           </section>
 
           <footer className="cb-footer">
-            <span>© {new Date().getFullYear()} DJ Dhyogo · {RAZAO_SOCIAL} · CNPJ {PIX_FMT}</span>
+            <span>© {new Date().getFullYear()} Dhyogo DJ · {RAZAO_SOCIAL} · CNPJ {PIX_FMT}</span>
             <span>Documento sem valor fiscal.</span>
           </footer>
         </article>
