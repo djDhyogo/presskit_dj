@@ -15,8 +15,8 @@ import {
   salvar,
 } from './orcamento/storage.js';
 
-const WHATSAPP = '559981289199';
-const WHATSAPP_FMT = '+55-99-98128-9199';
+const WHATSAPP = '5599981289199';
+const WHATSAPP_FMT = '(99) 98128-9199';
 const CNPJ_FMT = '55.996.625/0001-47';
 const RAZAO = 'Dyogo Santos Leal';
 const ENDERECO = 'Av. Pedro Neiva de Santana, 520 — 3º andar · Jardim América · Imperatriz — MA · CEP 65914-730';

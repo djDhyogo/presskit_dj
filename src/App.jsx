@@ -33,8 +33,8 @@ const DRONE = {
   sd: '/assets/video-drone-720.mp4',
   poster: '/assets/poster-drone.jpg',
 };
-const WHATSAPP = '559981289199';
-const WHATSAPP_DISPLAY = '+55-99-98128-9199';
+const WHATSAPP = '5599981289199';
+const WHATSAPP_DISPLAY = '(99) 98128-9199';
 
 const LINKS = [
   { href: '#trajetoria', label: 'Trajetória' },

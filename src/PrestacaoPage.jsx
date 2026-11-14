@@ -11,8 +11,8 @@ import {
 } from './prestacao/format.js';
 import { carregar, iniciarNovoExtrato, novoAdicional, novoEvento, salvar } from './prestacao/storage.js';
 
-const WHATSAPP = '559981289199';
-const WHATSAPP_FMT = '+55-99-98128-9199';
+const WHATSAPP = '5599981289199';
+const WHATSAPP_FMT = '(99) 98128-9199';
 const PIX = '55996625000147';
 const PIX_FMT = '55.996.625/0001-47';
 const RAZAO_SOCIAL = 'Dyogo Santos Leal';
